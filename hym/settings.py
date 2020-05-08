@@ -44,6 +44,7 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'django_cleanup'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -139,6 +140,17 @@ except ImportError:
     pass
 
 LOGIN_REDIRECT_URL = 'dashboard'
+#PROFILE_REDIRECT_URL = 'profile'
 
 #This will print email in console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}

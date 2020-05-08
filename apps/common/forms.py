@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from apps.userprofile.models import Profile
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text="Optional")
@@ -19,12 +20,41 @@ class SignUpForm(UserCreationForm):
 
         ]
 
+class UserForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=50, required=True)
+    last_name = forms.CharField(max_length=50, required=True)
 
-#class ChangePasswordForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+        ]
 
-#    class Meta:
- #       model = User
-  #      fields = [
-   #         "password1",
-    #        "password2",
-     #   ]
+class ProfileForm(forms.ModelForm):
+    phone_number = forms.CharField(max_length=11, required=True)
+
+    class Meta:
+        model = Profile
+        fields = [
+            "phone_number",
+            "birth_date",
+            "length",
+            "shoulder_back",
+            "chest",
+            "stomach_fit",
+            "sleeve",
+            "bicep_arm",
+            "cuff",
+            "neck",
+            "head",
+            "length_trouser",
+            "thigh",
+            "waist",
+            "ankle",
+            "knee",
+            "calf",
+            "profile_image",
+        ]

@@ -9,7 +9,22 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=11, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)  #change to datepicker(auto_add_now)
+    length = models.CharField(max_length=10, default="")
+    shoulder_back = models.CharField(max_length=10, default="")
+    chest = models.CharField(max_length=10, default="")
+    stomach_fit = models.CharField(max_length=10, default="")
+    sleeve = models.CharField(max_length=10, default="")
+    bicep_arm = models.CharField(max_length=10, default="")
+    cuff = models.CharField(max_length=10, default="")
+    neck = models.CharField(max_length=10, default="")
+    head = models.CharField(max_length=10, default="")
+    length_trouser = models.CharField(max_length=10, default="")
+    thigh = models.CharField(max_length=10, default="")
+    waist = models.CharField(max_length=10, default="")
+    ankle = models.CharField(max_length=10, default="")
+    knee = models.CharField(max_length=10, default="")
+    calf = models.CharField(max_length=10, default="")
     profile_image = models.ImageField(default='default-avatar.png', upload_to='users/', null=True, blank=True)
 
     def __str__(self):
