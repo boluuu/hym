@@ -35,6 +35,7 @@ class UserForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     phone_number = forms.CharField(max_length=11, required=True)
+    birth_date = forms.CharField(required=False)
 
     class Meta:
         model = Profile

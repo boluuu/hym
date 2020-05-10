@@ -9,7 +9,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=11, blank=True)
-    birth_date = models.DateField(null=True, blank=True)  #change to datepicker(auto_add_now)
+    birth_date = models.DateField(auto_now_add=False, blank=True, null=True, default=None)  #change to datepicker(auto_add_now)
     length = models.CharField(max_length=10, default="")
     shoulder_back = models.CharField(max_length=10, default="")
     chest = models.CharField(max_length=10, default="")
