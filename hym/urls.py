@@ -62,4 +62,6 @@ urlpatterns = [
          name='password_reset_complete'),
 
     path('oauth/', include('social_django.urls', namespace='social')), #for social media log
+
+    path('contact/', include('apps.common.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

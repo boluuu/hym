@@ -11,6 +11,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from apps.userprofile.models import Profile
 from django.contrib.auth import authenticate, login
+from apps.common.models import Contact
 
 class HomeView(TemplateView):
     template_name = "common/home.html"
@@ -70,3 +71,19 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+
+def contact(request):
+    if request.method == "POST":
+        firstname_r = request.POST.get('firstname')
+        lastname_r = request.POST.get('lastname')
+        email_r = request.POST.get('email')
+        subject_r = request.POST.get('subject')
+
+        c = Contact(firstname=firstname_r, lastname=lastname_r, email=email_r, subject=subject_r)
+        c.save()
+
+        return render(request, 'common/contact.html')
+    else:
+        return render(request, 'common/contact.html')
